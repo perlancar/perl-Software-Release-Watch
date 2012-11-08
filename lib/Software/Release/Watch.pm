@@ -129,7 +129,7 @@ sub list_software_releases {
             return [500, "Died: $err"];
         }
     } else {
-        return $res;
+        return [200, "OK", $res];
     }
 }
 
