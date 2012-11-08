@@ -23,4 +23,11 @@ C<list_software()> function.
 
 =head1 FAQ
 
+
+=head1 SEE ALSO
+
+L<Software::Release::Watch>
+
+L<Software::Catalog>
+
 =cut

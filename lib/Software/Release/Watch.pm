@@ -67,11 +67,9 @@ my $res = gen_read_table_func(
 
         my $query = shift;
         state $res = do {
-            my $mods = Module::List::list_modules("Software::Release::Watch::",
-                                              {list_modules=>1});
-            use Data::Dump; dd $mods;
-            $mods = [map {[[s/.+:://, $_]->[-1]]}
-                         grep {/::[a-z]\w*$/} (sort keys %$mods)];
+            my $mods = Module::List::list_modules(
+                "Software::Release::Watch::sw::", {list_modules=>1});
+            $mods = [map {[[s/.+:://, $_]->[-1]]} keys %$mods];
             {data=>$mods, paged=>0, filtered=>0, sorted=>0, fields_selected=>0};
         };
         $res;
@@ -83,11 +81,12 @@ die "BUG: Can't generate func: $res->[0] - $res->[1]"
     unless $res->[0] == 200;
 
 $SPEC{list_software_releases} = {
+    v => 1.1,
     summary => 'List software releases',
     args => {
         software_id => {
             schema => ["int*", {
-                match => Software::Catalog::swid_re,
+                match => $Software::Catalog::swid_re,
             }],
             req => 1,
             pos => 0,
@@ -104,7 +103,7 @@ sub list_software_releases {
     $res = Software::Catalog::get_software_info(id => $swid);
     return $res unless $res->[0] == 200;
 
-    my $mod = __PACKAGE__ . "::$swid";
+    my $mod = __PACKAGE__ . "::sw::$swid";
     my $mod_pm = $mod; $mod_pm =~ s!::!/!g; $mod_pm .= ".pm";
     eval { require $mod_pm };
     return [500, "Can't load $mod: $@"] if $@;
