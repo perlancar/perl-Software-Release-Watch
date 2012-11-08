@@ -44,7 +44,7 @@ sub get_url {
                  url => $url,
              }];
     }
-    [200, "OK", $resp];
+    $resp;
 }
 
 my $table_spec = {
@@ -83,6 +83,15 @@ die "BUG: Can't generate func: $res->[0] - $res->[1]"
 $SPEC{list_software_releases} = {
     v => 1.1,
     summary => 'List software releases',
+    description => <<'_',
+
+Statuses:
+
+* 541 - transient network failure
+* 542 - permanent network failure (e.g. server returns 404 page)
+* 543 - parsing failure (permanent)
+
+_
     args => {
         software_id => {
             schema => ["int*", {
@@ -103,17 +112,31 @@ sub list_software_releases {
     $res = Software::Catalog::get_software_info(id => $swid);
     return $res unless $res->[0] == 200;
 
-    my $mod = __PACKAGE__ . "::sw::$swid";
+    my $mod = __PACKAGE__ . "::SW::$swid";
     my $mod_pm = $mod; $mod_pm =~ s!::!/!g; $mod_pm .= ".pm";
     eval { require $mod_pm };
     return [500, "Can't load $mod: $@"] if $@;
 
-    my $obj = $mod->new;
-    $obj->list_releases;
+    my $obj = $mod->new(watcher => __PACKAGE__->new);
+
+    $res = eval { $obj->list_releases };
+    my $err = $@;
+
+    if ($err) {
+        if (ref($err) eq 'ARRAY') {
+            return $err;
+        } else {
+            return [500, "Died: $err"];
+        }
+    } else {
+        return $res;
+    }
 }
 
 1;
 # ABSTRACT: Watch latest software releases
+
+=for Pod::Coverage get_url
 
 =head1 SYNOPSIS
 
