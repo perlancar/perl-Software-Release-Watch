@@ -21,3 +21,5 @@ sub list_releases {
 
 1;
 # ABSTRACT: Get releases from web page
+
+=for Pod::Coverage list_releases

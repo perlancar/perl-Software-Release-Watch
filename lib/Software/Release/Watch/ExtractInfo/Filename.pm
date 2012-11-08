@@ -26,3 +26,5 @@ sub extract_info {
 
 1;
 # ABSTRACT: Parse releases from name like 'NAME-VERSION'
+
+=for Pod::Coverage extract_info

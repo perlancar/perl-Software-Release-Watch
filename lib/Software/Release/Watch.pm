@@ -94,7 +94,7 @@ Statuses:
 _
     args => {
         software_id => {
-            schema => ["int*", {
+            schema => ["str*", {
                 match => $Software::Catalog::swid_re,
             }],
             req => 1,
@@ -136,7 +136,7 @@ sub list_software_releases {
 1;
 # ABSTRACT: Watch latest software releases
 
-=for Pod::Coverage get_url
+=for Pod::Coverage get_url mech
 
 =head1 SYNOPSIS
 

@@ -47,3 +47,5 @@ sub parse_html {
 
 1;
 # ABSTRACT: Get releases from archive links in web page
+
+=for Pod::Coverage parse_html

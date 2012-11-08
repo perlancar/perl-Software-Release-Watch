@@ -14,3 +14,5 @@ requires 'cmp_version';
 
 1;
 # ABSTRACT: Software role
+
+=for Pod::Coverage watcher

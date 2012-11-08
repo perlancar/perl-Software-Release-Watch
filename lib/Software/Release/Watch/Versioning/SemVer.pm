@@ -14,3 +14,5 @@ sub cmp_version {
 
 1;
 # ABSTRACT: Semantic versioning as per semver.org
+
+=for Pod::Coverage cmp_version
