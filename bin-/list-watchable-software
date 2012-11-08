@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+
+use 5.010;
+use strict;
+use warnings;
+
+# VERSION
+
+use Perinci::CmdLine;
+Perinci::CmdLine->new(
+    url => '/Software/Release/Watch/list_software',
+)->run;
+
+1;
+# ABSTRACT: List watchable software
+# PODNAME: list-watchable-software
+
+=head1 DESCRIPTION
+
+This is a command-line interface for L<Software::Release::Watch>'s
+C<list_software()> function.
+
+
+=head1 FAQ
+
+=cut
