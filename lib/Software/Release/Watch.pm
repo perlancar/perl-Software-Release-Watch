@@ -1,6 +1,6 @@
 package Software::Release::Watch;
 
-use 5.010;
+use 5.010001;
 use Log::Any '$log';
 use Moo;
 
@@ -160,4 +160,3 @@ L<Software::Catalog>
 C<Software::Release::Watch::*> modules.
 
 =cut
-
