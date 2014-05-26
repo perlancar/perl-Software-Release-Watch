@@ -2,6 +2,7 @@ package Software::Release::Watch::Source::WebPage::ArchiveLinks;
 
 use 5.010;
 use Moo::Role;
+use experimental 'smartmatch';
 
 # VERSION
 
