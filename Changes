@@ -1,5 +1,12 @@
 Revision history for Software-Release-Watch
 
+0.02    2014-05-26 (SHARYANTO)
+
+        - No functional changes.
+
+        - Add 'use experimental smartmatch' for perl 5.18+ [CT].
+
+
 0.01    2012-11-08 (SHARYANTO)
 
         - First release (proof of concept).
