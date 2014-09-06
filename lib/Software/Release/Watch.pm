@@ -101,7 +101,7 @@ _
             pos => 0,
         },
     },
-    "_perinci.sub.wrapper.validate_args" => 0,
+    "x.perinci.sub.wrapper.disable_validate_args" => 1,
 };
 sub list_software_releases {
     my %args = @_; # VALIDATE_ARGS
