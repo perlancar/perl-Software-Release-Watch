@@ -1,5 +1,8 @@
 package Software::Release::Watch;
 
+# DATE
+# VERSION
+
 use 5.010001;
 use Log::Any '$log';
 use Moo;
@@ -14,9 +17,12 @@ our @EXPORT_OK = qw(
                        list_software_releases
                );
 
-# VERSION
-
 our %SPEC;
+
+$SPEC{':package'} = {
+    v => 1.1,
+    summary => 'Watch latest software releases',
+};
 
 has mech => (
     is => 'rw',
@@ -134,7 +140,7 @@ sub list_software_releases {
 }
 
 1;
-# ABSTRACT: Watch latest software releases
+# ABSTRACT:
 
 =for Pod::Coverage get_url mech
 
