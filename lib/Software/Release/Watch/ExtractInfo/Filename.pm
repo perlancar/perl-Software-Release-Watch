@@ -1,10 +1,11 @@
 package Software::Release::Watch::ExtractInfo::Filename;
 
-use 5.010;
-use Log::Any '$log';
-use Moo::Role;
-
+# DATE
 # VERSION
+
+use 5.010;
+use Log::Any::IfLOG '$log';
+use Moo::Role;
 
 #my @archive_exts = qw(tar.gz tar.bz2 tar zip rar);
 #my $archive_re   = join("|", map {quotemeta} @archive_exts);
