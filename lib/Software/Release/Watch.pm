@@ -7,7 +7,7 @@ use 5.010001;
 use Log::Any::IfLOG '$log';
 use Moo;
 
-use Perinci::Sub::Gen::AccessTable 0.17 qw(gen_read_table_func);
+use Perinci::Sub::Gen::AccessTable qw(gen_read_table_func);
 use Software::Catalog;
 
 require Exporter;
