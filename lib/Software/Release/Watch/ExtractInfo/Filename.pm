@@ -4,7 +4,7 @@ package Software::Release::Watch::ExtractInfo::Filename;
 # VERSION
 
 use 5.010;
-use Log::Any::IfLOG '$log';
+use Log::ger;
 use Moo::Role;
 
 #my @archive_exts = qw(tar.gz tar.bz2 tar zip rar);
@@ -18,7 +18,7 @@ sub extract_info {
     my ($sel, $fn) = @_;
 
     unless ($fn =~ /\A(.+)-([0-9].+)\z/) {
-        $log->warnf("Can't parse filename: %s", $fn);
+        log_warn("Can't parse filename: %s", $fn);
         return;
     }
 

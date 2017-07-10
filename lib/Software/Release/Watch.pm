@@ -4,7 +4,7 @@ package Software::Release::Watch;
 # VERSION
 
 use 5.010001;
-use Log::Any::IfLOG '$log';
+use Log::ger;
 use Moo;
 
 use Perinci::Sub::Gen::AccessTable qw(gen_read_table_func);
